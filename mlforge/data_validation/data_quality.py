@@ -120,6 +120,14 @@ class DataQualityCheck:
             report["passed"].append("No high-cardinality columns.")
 
     def _check_class_imbalance(self, df, target_col, report):
+        # Skip if target is continuous (regression) — imbalance only applies to classification
+        # A target is continuous if it's float OR has many unique values (> 20)
+        is_continuous = (df[target_col].dtype in ["float32", "float64"]
+                         or df[target_col].nunique() > 20)
+        if is_continuous:
+            report["passed"].append("Target is continuous — class imbalance check skipped.")
+            return
+
         dist    = (df[target_col].value_counts() / len(df)).to_dict()
         min_pct = min(dist.values())
         report["stats"]["class_distribution"] = {
