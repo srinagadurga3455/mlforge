@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# ML artifacts — never commit these
+*.pkl
+*.joblib
+models/
+data/raw/
+data/ingested/
+*.log
+logs/
+*.jsonl
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
