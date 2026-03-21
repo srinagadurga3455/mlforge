@@ -4,7 +4,7 @@ with open("README.md", encoding="utf-8") as f:
     long_description = f.read()
 
 setup(
-    name = "mlforge",
+    name = "mlforge-py",
     version          = "1.0.0",
     author           = "srinagadurga3455",
     description      = "End-to-end ML pipeline library — data ingestion to deployment",
